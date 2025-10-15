@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function Registro() {
   const [formData, setFormData] = useState({
-    usuario: "",
     nombre: "",
     edad: "",
     correo: "",
@@ -31,7 +30,6 @@ function Registro() {
 
       if (data.success) {
         setFormData({
-          usuario: "",
           nombre: "",
           edad: "",
           correo: "",
@@ -48,18 +46,6 @@ function Registro() {
       <p className="title">Registro Lumina</p>
       <form className="form" onSubmit={handleSubmit}>
         <div className="grid-pairs">
-          <div className="input-group">
-            <label htmlFor="usuario">Usuario</label>
-            <input
-              type="text"
-              name="usuario"
-              id="usuario"
-              value={formData.usuario}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
           <div className="input-group">
             <label htmlFor="nombre">Nombre</label>
             <input

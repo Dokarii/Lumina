@@ -18,7 +18,6 @@
   margin-bottom: 1rem;
 }
 
-
 /* ===== Inputs ===== */
 .input-group {
   font-size: 0.9rem;
@@ -103,32 +102,40 @@
 }
 
 /* ===== Fila de dos columnas ===== */
-/* ===== Grid de pares ===== */
-.grid-pairs {
+/* ===== Organización de pares de inputs ===== */
+.input-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-}
-
-/* Asegura que todos los elementos ocupen el mismo ancho */
-.grid-pairs .input-group {
-  display: flex;
-  flex-direction: column;
   width: 100%;
 }
 
-/* Botón ocupa toda la columna derecha */
-.grid-pairs .sign {
-  margin-top: auto;
+.pair .input-group {
+  width: 100%;
+}
+
+/* Botón ajustado */
+.sign {
+  margin-top: 1rem;
   height: 2.5rem;
   font-size: 0.95rem;
 }
 
 /* Responsivo: en móviles se apilan */
 @media (max-width: 600px) {
-  .grid-pairs {
+  .pair {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .input-pairs {
+    gap: 0.75rem;
   }
 }
-
-

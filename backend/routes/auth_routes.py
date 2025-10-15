@@ -7,7 +7,6 @@ auth = Blueprint('auth', __name__)
 @auth.route("/register", methods=["POST"])
 def register():
     data = request.get_json()
-    usuario = data.get("usuario")
     nombre = data.get("nombre")
     edad = data.get("edad")
     correo = data.get("correo")
@@ -17,9 +16,9 @@ def register():
     cursor = conn.cursor()
     try:
         cursor.execute("""
-            INSERT INTO usuarios (usuario, nombre, edad, correo, contrasena)
-            VALUES (%s, %s, %s, %s, %s)
-        """, (usuario, nombre, edad, correo, contrasena))
+            INSERT INTO usuarios (nombre, edad, correo, contrasena)
+            VALUES (%s, %s, %s, %s)
+        """, (nombre, edad, correo, contrasena))
         conn.commit()
         return jsonify({"success": True, "message": "Usuario registrado correctamente"})
     except Exception as e:
@@ -46,7 +45,6 @@ def login():
         return jsonify({
             "success": True,
             "message": "Inicio de sesión exitoso",
-            "usuario": user["usuario"],
             "nombre": user["nombre"],
             "correo": user["correo"]
         })

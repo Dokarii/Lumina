@@ -1,0 +1,136 @@
+/* ===== Formulario base ===== */
+.form-container {
+  border-radius: 0.75rem;
+  background-color: #ffe4e6; /* rosa claro */
+  padding: 1.5rem 1.75rem; /* menos padding vertical */
+  color: #333;
+  width: 90%;
+  max-width: 360px;
+  margin: 3rem auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* ===== Título ===== */
+.title {
+  text-align: center;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #d6336c;
+  margin-bottom: 1rem;
+}
+
+/* ===== Form ===== */
+.form {
+  margin-top: 0.5rem; /* antes 1.5rem */
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.input-group label {
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+  display: block;
+  padding-left: 0.15rem;
+}
+
+.input-group input {
+  display: block;
+  width: calc(100%);
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 2.5rem;
+  margin-bottom: 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid #e0bbe4;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #c084fc;
+  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.25);
+}
+
+/* ===== Botón ===== */
+.sign {
+  display: block;
+  width: 100%;
+  background-color: #ff8a80;
+  padding: 0.6rem;
+  margin-top: 0.75rem;
+  text-align: center;
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sign:hover {
+  background-color: #ff6b6b;
+  transform: translateY(-1px);
+}
+
+/* ===== Enlaces ===== */
+.forgot {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+.forgot a,
+.signup a {
+  color: #9f7aea;
+  text-decoration: none;
+}
+
+.forgot a:hover,
+.signup a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Pie del formulario ===== */
+.signup {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* ===== Responsividad ===== */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1.25rem;
+    max-width: 92%;
+    margin: 1.5rem auto;
+  }
+
+  .sign {
+    font-size: 0.9rem;
+    padding: 0.55rem;
+  }
+
+  .input-group input {
+    font-size: 0.85rem;
+    height: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .form-container {
+    max-width: 400px;
+    padding: 2rem 2.25rem;
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./registro.css";
 
 function Registro() {
   const [formData, setFormData] = useState({
@@ -42,56 +43,60 @@ function Registro() {
     }
   };
   return (
-    <div className="form-container">
+    <div className="form-container register">
       <p className="title">Registro Lumina</p>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="grid-pairs">
-          <div className="input-group">
-            <label htmlFor="nombre">Nombre</label>
-            <input
-              type="text"
-              name="nombre"
-              id="nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              required
-            />
+        <div className="pair-container">
+          {/* Fila 1: Información Personal */}
+          <div className="row personal-row">
+            <div className="input-group">
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="edad">Edad</label>
+              <input
+                type="number"
+                name="edad"
+                id="edad"
+                value={formData.edad}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
 
-          <div className="input-group">
-            <label htmlFor="edad">Edad</label>
-            <input
-              type="number"
-              name="edad"
-              id="edad"
-              value={formData.edad}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="correo">Correo</label>
-            <input
-              type="email"
-              name="correo"
-              id="correo"
-              value={formData.correo}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="contrasena">Contraseña</label>
-            <input
-              type="password"
-              name="contrasena"
-              id="contrasena"
-              value={formData.contrasena}
-              onChange={handleChange}
-              required
-            />
+          {/* Fila 2: Credenciales */}
+          <div className="row credentials-row">
+            <div className="input-group">
+              <label htmlFor="correo">Correo</label>
+              <input
+                type="email"
+                name="correo"
+                id="correo"
+                value={formData.correo}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="contrasena">Contraseña</label>
+              <input
+                type="password"
+                name="contrasena"
+                id="contrasena"
+                value={formData.contrasena}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
         </div>
 

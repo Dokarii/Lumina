@@ -34,22 +34,36 @@ def login():
     correo = data.get("correo")
     contrasena = data.get("contrasena")
 
-    conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM usuarios WHERE correo = %s", (correo,))
-    user = cursor.fetchone()
-    cursor.close()
-    conn.close()
+    conn = None
+    cursor = None
 
-    if user and check_password_hash(user["contrasena"], contrasena):
-        return jsonify({
-            "success": True,
-            "message": "Inicio de sesión exitoso",
-            "nombre": user["nombre"],
-            "correo": user["correo"]
-        })
-    else:
-        return jsonify({
-            "success": False,
-            "message": "Correo o contraseña incorrectos"
-        })
+    try:
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT * FROM usuarios WHERE correo = %s", (correo,))
+        results = cursor.fetchall()
+        user = results[0] if results else None
+
+        if user and check_password_hash(user["contrasena"], contrasena):
+            return jsonify({
+                "success": True,
+                "message": "Inicio de sesión exitoso",
+                "nombre": user["nombre"],
+                "correo": user["correo"]
+            })
+        else:
+            return jsonify({
+                "success": False,
+                "message": "Correo o contraseña incorrectos"
+            })
+
+    except Exception as e:
+        print("Error en login:", e)
+        return jsonify({"success": False, "message": "Error interno del servidor"})
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()

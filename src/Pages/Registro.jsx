@@ -47,7 +47,6 @@ function Registro() {
       <p className="title">Registro Lumina</p>
       <form className="form" onSubmit={handleSubmit}>
         <div className="pair-container">
-          {/* Fila 1: Información Personal */}
           <div className="row personal-row">
             <div className="input-group">
               <label htmlFor="nombre">Nombre</label>
@@ -73,7 +72,6 @@ function Registro() {
             </div>
           </div>
 
-          {/* Fila 2: Credenciales */}
           <div className="row credentials-row">
             <div className="input-group">
               <label htmlFor="correo">Correo</label>

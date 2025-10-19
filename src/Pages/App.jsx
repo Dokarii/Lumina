@@ -24,10 +24,8 @@ function Login() {
 
       if (data.success) {
         alert("Bienvenido " + data.nombre);
-        // Guarda el usuario en el almacenamiento local
         localStorage.setItem("usuario", JSON.stringify(data));
-        // Redirige al dashboard o a la encuesta
-        navigate("/");
+        navigate("/dashboard");
       } else {
         alert(data.message);
       }

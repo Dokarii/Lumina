@@ -27,6 +27,17 @@ def init_db():
             )
             """
         )
+
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS encuestas (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            usuario_id INT NOT NULL,
+            fecha DATE NOT NULL,
+            puntuacion_animo INT NOT NULL CHECK (puntuacion_animo BETWEEN 1 AND 10),
+            habitos TEXT,
+            FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+        )
+    """)
         connection.commit()
     finally:
         if cursor:

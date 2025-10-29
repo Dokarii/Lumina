@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/login", {
+      const res = await fetch("http://127.0.0.1:5000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -20,18 +20,30 @@ function Login() {
         }),
       });
 
+      // Manejo robusto de errores y respuestas no-JSON
+      if (!res.ok) {
+        console.error("/api/login status:", res.status);
+        const text = await res.text();
+        try {
+          const err = JSON.parse(text);
+          throw new Error(err.message || `Error ${res.status}`);
+        } catch {
+          throw new Error(text || `Error ${res.status}`);
+        }
+      }
+
       const data = await res.json();
 
-      if (data.success) {
+      if (data && data.success) {
         alert("Bienvenido " + data.nombre);
         localStorage.setItem("usuario", JSON.stringify(data));
         navigate("/dashboard");
       } else {
-        alert(data.message);
+        alert((data && data.message) || "Credenciales inválidas");
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      alert("Error al conectar con el servidor.");
+      alert(error.message || "Error al conectar con el servidor.");
     }
   };
 

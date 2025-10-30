@@ -4,8 +4,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = Blueprint('auth', __name__)
 
-@auth.route("/register", methods=["POST"])
+@auth.route("/register", methods=["POST", "OPTIONS"])
 def register():
+    if request.method == "OPTIONS":
+        return ("", 204)
     data = request.get_json()
     nombre = data.get("nombre")
     edad = data.get("edad")
@@ -28,8 +30,10 @@ def register():
         cursor.close()
         conn.close()
 
-@auth.route("/login", methods=["POST"])
+@auth.route("/login", methods=["POST", "OPTIONS"])
 def login():
+    if request.method == "OPTIONS":
+        return ("", 204)
     data = request.get_json()
     correo = data.get("correo")
     contrasena = data.get("contrasena")

@@ -21,16 +21,27 @@ function Registro() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/register", {
+      const res = await fetch("http://127.0.0.1:5000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
-      alert(data.message);
+      if (!res.ok) {
+        console.error("/api/register status:", res.status);
+        const text = await res.text();
+        try {
+          const err = JSON.parse(text);
+          throw new Error(err.message || `Error ${res.status}`);
+        } catch {
+          throw new Error(text || `Error ${res.status}`);
+        }
+      }
 
-      if (data.success) {
+      const data = await res.json();
+      alert((data && data.message) || "Registro realizado");
+
+      if (data && data.success) {
         setFormData({
           nombre: "",
           edad: "",
@@ -41,7 +52,7 @@ function Registro() {
       }
     } catch (error) {
       console.error("Error al registrar usuario:", error);
-      alert("Error al registrar usuario");
+      alert(error.message || "Error al registrar usuario");
     }
   };
   return (

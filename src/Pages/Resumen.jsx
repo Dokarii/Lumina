@@ -28,7 +28,7 @@ function Resumen() {
       const response = await fetch(
         `http://localhost:5000/calificaciones/usuario/${usuario_id}`
       );
-      
+
       if (!response.ok) {
         console.error("Error en la respuesta:", response.status);
         alert(`Error al obtener datos: ${response.status}`);
@@ -48,19 +48,21 @@ function Resumen() {
       }
 
       // Procesar los datos para la tabla
-      const processedData = registros.map(registro => {
-        const fecha = new Date(registro.fecha_registro || registro.fecha).toLocaleDateString();
+      const processedData = registros.map((registro) => {
+        const fecha = new Date(
+          registro.fecha_registro || registro.fecha
+        ).toLocaleDateString();
         const animo = registro.animo || 0;
         const energia = registro.energia || 0;
         const estres = registro.estres || 0;
         const promedioRegistro = Math.round((animo + energia + estres) / 3);
-        
+
         return {
           fecha,
           animo,
           energia,
           estres,
-          promedio: promedioRegistro
+          promedio: promedioRegistro,
         };
       });
 
@@ -75,7 +77,7 @@ function Resumen() {
 
   return (
     <div className="resumen-container">
-      <h1>Resumen de Bienestar</h1>
+      <h1>Tu resumen Lumina</h1>
       <button onClick={handleResumen} className="update-button">
         Actualizar datos
       </button>
@@ -106,19 +108,32 @@ function Resumen() {
               ))}
             </tbody>
           </table>
-          
+
           {data.length > 0 && (
             <div className="resumen-promedios">
               <h3>Promedios Generales</h3>
-              <p>Ánimo: {Math.round(promedio(data.map(item => item.animo)))}</p>
-              <p>Energía: {Math.round(promedio(data.map(item => item.energia)))}</p>
-              <p>Estrés: {Math.round(promedio(data.map(item => item.estres)))}</p>
-              <p>Bienestar general: {Math.round(promedio(data.map(item => item.promedio)))}</p>
+              <p>
+                Ánimo: {Math.round(promedio(data.map((item) => item.animo)))}
+              </p>
+              <p>
+                Energía:{" "}
+                {Math.round(promedio(data.map((item) => item.energia)))}
+              </p>
+              <p>
+                Estrés: {Math.round(promedio(data.map((item) => item.estres)))}
+              </p>
+              <p>
+                Bienestar general:{" "}
+                {Math.round(promedio(data.map((item) => item.promedio)))}
+              </p>
             </div>
           )}
         </div>
       ) : (
-        <p className="no-data-message">No hay datos disponibles. Completa la encuesta de bienestar para ver resultados.</p>
+        <p className="no-data-message">
+          No hay datos disponibles. Completa la encuesta de bienestar para ver
+          resultados.
+        </p>
       )}
     </div>
   );

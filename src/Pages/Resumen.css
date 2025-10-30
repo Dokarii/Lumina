@@ -58,6 +58,7 @@
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #f0f0f0;
+  color: #d6336c;
 }
 
 .resumen-table tr:nth-child(even) {
@@ -74,6 +75,7 @@
   padding: 15px;
   border-radius: 8px;
   text-align: center;
+  color: #ff8a80;
 }
 
 .resumen-promedios h3 {

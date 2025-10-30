@@ -44,9 +44,9 @@ function Dashboard() {
           <div className="resumen-section">
             <h2>Resumen</h2>
             <p>Aquí puedes ver el resumen y analisis de tus resultados</p>
-            <button className="submit-btn">
-              <Link to="/resumen">Ver Resumen</Link>
-            </button>
+            <Link to="/resumen">
+              <button className="submit-btn">Ver Resumen</button>
+            </Link>
           </div>
         </div>
       </div>

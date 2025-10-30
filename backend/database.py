@@ -1,18 +1,13 @@
 import mysql.connector as mysql
 
+
 def get_connection():
-<<<<<<< HEAD
-    return mysql.connector.connect(
-=======
     connection = mysql.connect(
->>>>>>> 04c78dc80f5981cbfddada3316a60ed11de31805
         host="localhost",
         user="root",
         password="",  # pon tu contraseña si tienes
-        database="lumina_db"
+        database="lumina_db",
     )
-<<<<<<< HEAD
-=======
     return connection
 
 
@@ -22,6 +17,7 @@ def init_db():
     try:
         connection = get_connection()
         cursor = connection.cursor()
+        # Usuarios
         cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS usuarios (
@@ -33,17 +29,20 @@ def init_db():
             )
             """
         )
-
-        cursor.execute("""
-        CREATE TABLE IF NOT EXISTS encuestas (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            usuario_id INT NOT NULL,
-            fecha DATE NOT NULL,
-            puntuacion_animo INT NOT NULL CHECK (puntuacion_animo BETWEEN 1 AND 10),
-            habitos TEXT,
-            FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+        # Calificaciones (para MoodSurvey/Resumen)
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS calificaciones (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                usuario_id INT NOT NULL,
+                animo INT,
+                estres INT,
+                energia INT,
+                fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+            )
+            """
         )
-    """)
         connection.commit()
     finally:
         if cursor:
@@ -54,5 +53,4 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
-    print("Tabla 'usuarios' verificada/creada correctamente.")
->>>>>>> 04c78dc80f5981cbfddada3316a60ed11de31805
+    print("Tablas 'usuarios' y 'calificaciones' verificadas/creadas correctamente.")

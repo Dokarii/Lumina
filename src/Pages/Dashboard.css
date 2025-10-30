@@ -22,6 +22,12 @@
   object-fit: contain;
 }
 
+.lumina-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
 .user-area {
   display: flex;
   align-items: center;
@@ -115,6 +121,25 @@
 .resumen-section {
   display: flex;
   gap: 10px;
+  align-items: center;
+}
+
+/* Mini gráfico en tarjeta de Resumen */
+.mini-chart {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.mini-chart img {
+  width: 220px;
+  max-width: 85%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(214, 51, 108, 0.15);
+  border: 1px solid #ffe4e6;
 }
 
 .welcome-section button:hover,

@@ -1,5 +1,8 @@
 from flask import Blueprint, request, jsonify
 from database import get_connection
+import matplotlib
+# Usar backend sin GUI para generar imágenes en servidor/headless
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import io
@@ -8,8 +11,10 @@ import numpy as np
 
 calificaciones_bp = Blueprint("calificaciones_bp", __name__)
 
-@calificaciones_bp.route("/calificaciones", methods=["POST"])
+@calificaciones_bp.route("/calificaciones", methods=["POST", "OPTIONS"])
 def guardar_calificacion():
+    if request.method == "OPTIONS":
+        return ("", 204)
     data = request.get_json()
     db = get_connection()
     cursor = db.cursor()
@@ -30,8 +35,10 @@ def guardar_calificacion():
 
     return jsonify({"message": "Calificación guardada"}), 201
 
-@calificaciones_bp.route("/api/resumen/<int:usuario_id>", methods=["GET"])
+@calificaciones_bp.route("/resumen/<int:usuario_id>", methods=["GET", "OPTIONS"])
 def resumen_usuario(usuario_id):
+    if request.method == "OPTIONS":
+        return ("", 204)
     db = get_connection()
     cursor = db.cursor(dictionary=True)
     cursor.execute("""
@@ -98,8 +105,10 @@ def resumen_usuario(usuario_id):
         "grafico_evolucion": img_evo_base64
     }), 200
 
-@calificaciones_bp.route("/calificaciones/usuario/<int:usuario_id>", methods=["GET"])
+@calificaciones_bp.route("/calificaciones/usuario/<int:usuario_id>", methods=["GET", "OPTIONS"])
 def obtener_por_usuario(usuario_id):
+    if request.method == "OPTIONS":
+        return ("", 204)
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 

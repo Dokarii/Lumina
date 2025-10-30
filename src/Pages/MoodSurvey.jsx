@@ -29,20 +29,23 @@ function MoodSurvey() {
     }
 
     const payload = {
-      usuario_id,
+      usuario_id: Number(usuario_id),
       animo,
       estres,
       energia,
     };
 
     try {
-      const response = await fetch("http://localhost:5000/calificaciones", {
+      const response = await fetch("http://127.0.0.1:5000/api/calificaciones", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Error guardando la calificación");
+      if (!response.ok) {
+        console.error("/api/calificaciones status:", response.status);
+        throw new Error("Error guardando la calificación");
+      }
       alert("✅ Tu estado emocional ha sido registrado");
       setResponses({});
     } catch (error) {

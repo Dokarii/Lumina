@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import "./App.css";
+import LuminaLogoSolo from "../images/LuminaLogoSolo.png";
 
 function HeaderPage() {
   const [usuario, setUsuario] = useState(null);
@@ -25,11 +26,7 @@ function HeaderPage() {
     <div className="dashboard">
       <header className="dashboard-header">
         <div className="logo-area">
-          <img
-            src="../images/LuminaLogoSolo.png"
-            alt="Lumina Logo"
-            className="lumina-logo"
-          />
+          <img src={LuminaLogoSolo} alt="Lumina Logo" className="lumina-logo" />
         </div>
         <strong>
           <p>Bienvenido a Lumina 🌞</p>

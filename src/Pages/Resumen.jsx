@@ -26,7 +26,7 @@ function Resumen() {
     try {
       console.log("Obteniendo datos para el usuario ID:", usuario_id);
       const response = await fetch(
-        `http://localhost:5000/calificaciones/usuario/${usuario_id}`
+        `http://127.0.0.1:5000/api/calificaciones/usuario/${usuario_id}`
       );
 
       if (!response.ok) {

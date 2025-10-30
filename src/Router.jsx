@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import App from "./Pages/App.jsx";
 import Registro from "./Pages/Registro.jsx";
 import Dashboard from "./Pages/Dashboard.jsx";
@@ -10,37 +10,41 @@ function RequireAuth({ children }) {
   const isAuthed = !!usuarioStr;
   return isAuthed ? children : <Navigate to="/" replace />;
 }
-function Router() {
-  return (
-    <Routes>
-      <Route path="/iniciar-sesion" element={<App />} />
-      <Route path="/registro" element={<Registro />} />
-      <Route
-        path="/dashboard"
-        element={
-          <RequireAuth>
-            <Dashboard />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/resumen"
-        element={
-          <RequireAuth>
-            <Resumen />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/encuesta-page"
-        element={
-          <RequireAuth>
-            <MoodSurvey />
-          </RequireAuth>
-        }
-      />
-    </Routes>
-  );
-}
+const router = createBrowserRouter(
+  [
+    { path: "/", element: <Navigate to="/iniciar-sesion" replace /> },
+    { path: "/iniciar-sesion", element: <App /> },
+    { path: "/registro", element: <Registro /> },
+    {
+      path: "/dashboard",
+      element: (
+        <RequireAuth>
+          <Dashboard />
+        </RequireAuth>
+      ),
+    },
+    {
+      path: "/resumen",
+      element: (
+        <RequireAuth>
+          <Resumen />
+        </RequireAuth>
+      ),
+    },
+    {
+      path: "/encuesta-page",
+      element: (
+        <RequireAuth>
+          <MoodSurvey />
+        </RequireAuth>
+      ),
+    },
+  ],
+  {
+    future: { v7_relativeSplatPath: true },
+  }
+);
 
-export default Router;
+export default function Router() {
+  return <RouterProvider router={router} />;
+}

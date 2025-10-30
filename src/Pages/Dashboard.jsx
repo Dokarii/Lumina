@@ -8,6 +8,7 @@ import Resumen from "./Resumen.jsx";
 
 function Dashboard() {
   const [usuario, setUsuario] = useState(null);
+  const [miniChart, setMiniChart] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,10 +20,27 @@ function Dashboard() {
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("usuario");
-    navigate("/iniciar-sesion");
-  };
+  useEffect(() => {
+    const fetchMiniChart = async () => {
+      if (!usuario || !usuario.id) return;
+      try {
+        const res = await fetch(`http://127.0.0.1:5000/api/resumen/${usuario.id}`);
+        if (!res.ok) return; // si no hay datos aún, no mostramos nada
+        const data = await res.json();
+        if (data && data.grafico_barras) {
+          setMiniChart(`data:image/png;base64,${data.grafico_barras}`);
+        }
+      } catch {
+        // ignoramos errores para no romper el dashboard
+      }
+    };
+    fetchMiniChart();
+  }, [usuario]);
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("usuario");
+  //   navigate("/iniciar-sesion");
+  // };
 
   return (
     <div className="dashboard">
@@ -44,6 +62,11 @@ function Dashboard() {
           <div className="resumen-section">
             <h2>Resumen</h2>
             <p>Aquí puedes ver el resumen y analisis de tus resultados</p>
+            {miniChart && (
+              <div className="mini-chart">
+                <img src={miniChart} alt="Resumen rápido" />
+              </div>
+            )}
             <Link to="/resumen">
               <button className="submit-btn">Ver Resumen</button>
             </Link>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./registro.css";
 
 function Registro() {
@@ -9,6 +9,7 @@ function Registro() {
     correo: "",
     contrasena: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -36,6 +37,7 @@ function Registro() {
           correo: "",
           contrasena: "",
         });
+        navigate("/iniciar-sesion");
       }
     } catch (error) {
       console.error("Error al registrar usuario:", error);

@@ -4,6 +4,7 @@ import "./Dashboard.css";
 import "./App.css";
 import Footer from "./footer.jsx";
 import HeaderPage from "./Header.jsx";
+import Resumen from "./Resumen.jsx";
 
 function Dashboard() {
   const [usuario, setUsuario] = useState(null);
@@ -33,18 +34,19 @@ function Dashboard() {
             <div className="via-form">
               <h2>Formulario diario</h2>
               <p>{usuario.nombre} aqui tienes el formulario de hoy</p>
-              <Link to="/encuesta-page" rel="noopener noreferrer"><button>Responder</button></Link>
+              <Link to="/encuesta-page" rel="noopener noreferrer">
+                <button>Responder</button>
+              </Link>
             </div>
           </div>
         )}
         <div className="right-sections">
           <div className="resumen-section">
-            <h2>Resumen de tu progreso</h2>
-            <button>Ver Resumen</button>
-          </div>
-          <div className="ultima-respuesta-section">
-            <h2>Tu última respuesta</h2>
-            <button>Ver Última Respuesta</button>
+            <h2>Resumen</h2>
+            <p>Aquí puedes ver el resumen y analisis de tus resultados</p>
+            <button className="submit-btn">
+              <Link to="/resumen">Ver Resumen</Link>
+            </button>
           </div>
         </div>
       </div>

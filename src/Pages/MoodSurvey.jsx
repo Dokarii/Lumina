@@ -21,7 +21,12 @@ function MoodSurvey() {
       (responses[7] + responses[8] + responses[9]) / 3
     );
 
-    const usuario_id = localStorage.getItem("usuario_id") || 1;
+    const usuario_id = localStorage.getItem("usuarioId");
+
+    if (!usuario_id) {
+      alert("No se encontró el ID del usuario. Por favor inicia sesión nuevamente.");
+      return;
+    }
 
     const payload = {
       usuario_id,

@@ -24,7 +24,14 @@ function Login() {
 
       if (data.success) {
         alert("Bienvenido " + data.nombre);
-        localStorage.setItem("usuario", JSON.stringify(data));
+        localStorage.setItem("usuarioId", data.id);
+        localStorage.setItem("usuarioNombre", data.nombre);
+        // Guardar el objeto usuario completo para que RequireAuth funcione correctamente
+        localStorage.setItem("usuario", JSON.stringify({
+          id: data.id,
+          nombre: data.nombre,
+          correo: data.correo
+        }));
         navigate("/dashboard");
       } else {
         alert(data.message);

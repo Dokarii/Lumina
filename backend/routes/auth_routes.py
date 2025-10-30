@@ -49,9 +49,11 @@ def login():
             return jsonify({
                 "success": True,
                 "message": "Inicio de sesión exitoso",
+                "id": user["id"],
                 "nombre": user["nombre"],
                 "correo": user["correo"]
             })
+
         else:
             return jsonify({
                 "success": False,

@@ -3,6 +3,7 @@ import App from "./Pages/App.jsx";
 import Registro from "./Pages/Registro.jsx";
 import Dashboard from "./Pages/Dashboard.jsx";
 import MoodSurvey from "./Pages/MoodSurvey.jsx";
+import Resumen from "./Pages/Resumen.jsx";
 
 function RequireAuth({ children }) {
   const usuarioStr = localStorage.getItem("usuario");
@@ -23,6 +24,14 @@ function Router() {
         }
       />
       <Route
+        path="/resumen"
+        element={
+          <RequireAuth>
+            <Resumen />
+          </RequireAuth>
+        }
+      />
+      <Route
         path="/encuesta-page"
         element={
           <RequireAuth>
@@ -30,7 +39,6 @@ function Router() {
           </RequireAuth>
         }
       />
-      <Route path="/" element={<RequireAuth></RequireAuth>} />
     </Routes>
   );
 }

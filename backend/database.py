@@ -1,10 +1,9 @@
 import mysql.connector
 
 def get_connection():
-    connection = mysql.connector.connect(
+    return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="",
+        password="",  # pon tu contraseña si tienes
         database="lumina_db"
     )
-    return connection

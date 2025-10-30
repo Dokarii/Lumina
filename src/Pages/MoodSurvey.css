@@ -1,0 +1,147 @@
+.survey-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.survey-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #d6336c;
+  text-shadow: 1px 1px 2px rgba(214, 51, 108, 0.1);
+}
+
+/* Tarjetas de preguntas */
+.question-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ffe4e6;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Colores por categoría */
+.question-card.ánimo,
+.question-card.animo {
+  border-left: 6px solid #e087be;
+}
+
+.question-card.estrés,
+.question-card.estres {
+  border-left: 6px solid #ff6a80;
+}
+
+.question-card.energía,
+.question-card.energia {
+  border-left: 6px solid #9f7aea;
+}
+
+.question-text {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  color: #333333;
+  line-height: 1.5;
+}
+
+/* Opciones */
+.options-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffe4e6;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  margin-top: 1rem;
+}
+
+.option-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.option-item:hover {
+  background-color: #ffffff;
+  color: #d6336c;
+}
+
+.option-item input[type="radio"] {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #c084fc;
+  border-radius: 50%;
+  margin: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.option-item input[type="radio"]:checked {
+  background-color: #d6336c;
+  border-color: #d6336c;
+  box-shadow: 0 0 0 2px #ffe4e6;
+}
+
+/* Botón */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: #d6336c;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background: #d1345b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(209, 52, 91, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .survey-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .survey-title {
+    font-size: 2rem;
+  }
+
+  .options-container {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .option-item {
+    flex: 1 1 18%;
+    min-width: 60px;
+  }
+}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import "./App.css";
+import Footer from "./footer.jsx";
+import HeaderPage from "./Header.jsx";
 
 function Dashboard() {
   const [usuario, setUsuario] = useState(null);
@@ -23,60 +25,30 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <header className="dashboard-header">
-        <div className="logo-area">
-          <img
-            src= "../images/LuminaLogoSolo.png" alt="Lumina Logo" className="lumina-logo"
-          />
-        </div>
-        <strong>
-          <p>
-            Bienvenido a Lumina 🌞
-          </p>
-        </strong>
-        <div className="user-area">
-          {usuario && <span className="user-name">{usuario.nombre}</span>}
-          <button onClick={handleLogout} className="logout-btn">
-            Salir
-          </button>
-        </div>
-      </header>
-
-      {/* 💬 Bienvenida */}
-      <main className="dashboard-content">
-        <div className="grid">
-          <section className="card">
-            <h2>Tu perfil</h2>
-            {usuario ? (
-              <p>
-                Nombre: <strong>{usuario.nombre}</strong>
-              </p>
-            ) : (
-              <p>Inicia sesión para ver tu perfil.</p>
-            )}
-          </section>
-
-          <section className="card card-actions">
-            <h2>Acciones rápidas</h2>
-            <div className="actions">
-              <button className="btn-secondary" disabled>
-                Editar perfil
-              </button>
-              <button className="btn-secondary" disabled>
-                Ver reportes
-              </button>
-              <button className="btn-secondary" disabled>
-                Configuración
-              </button>
+      <HeaderPage />
+      <div className="dashboard-content">
+        {usuario && (
+          <div className="welcome-section">
+            <h1>Bienvenido, {usuario.nombre}!</h1>
+            <div className="via-form">
+              <h2>Formulario diario</h2>
+              <p>{usuario.nombre} aqui tienes el formulario de hoy</p>
+              <Link to="/encuesta-page" rel="noopener noreferrer"><button>Responder</button></Link>
             </div>
-          </section>
-
-          <section className="card">
-            <h2>Estado</h2>
-            <p>Todo listo. Próximamente más funcionalidades.</p>
-          </section>
+          </div>
+        )}
+        <div className="right-sections">
+          <div className="resumen-section">
+            <h2>Resumen de tu progreso</h2>
+            <button>Ver Resumen</button>
+          </div>
+          <div className="ultima-respuesta-section">
+            <h2>Tu última respuesta</h2>
+            <button>Ver Última Respuesta</button>
+          </div>
         </div>
-      </main>
+      </div>
+      <Footer />
     </div>
   );
 }

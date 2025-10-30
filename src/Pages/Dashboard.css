@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   font-family: "Inter", sans-serif;
+  color: #6b7280;
 }
 
 /* ===== NAVBAR / HEADER ===== */
@@ -13,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2rem;
-  background-color: #FFE4E6;
+  background-color: #ffe4e6;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -30,12 +31,12 @@
 
 .user-name {
   font-weight: 600;
-  color: #D6336C;
+  color: #d6336c;
   font-size: 1rem;
 }
 
 .logout-btn {
-  background-color: #FF8A80;
+  background-color: #ff8a80;
   border: none;
   color: white;
   padding: 0.5rem 1rem;
@@ -46,101 +47,120 @@
 }
 
 .logout-btn:hover {
-  background-color: #FF6B6B;
+  background-color: #ff6b6b;
   transform: translateY(-1px);
 }
 
 /* ===== CONTENIDO CENTRAL ===== */
 .dashboard-content {
-  flex-grow: 1;
+  display: flex;
+  grid-template-columns: 65% 35%;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 2rem auto;
+  height: calc(100vh - 160px); /* Header + Footer */
+  box-sizing: border-box;
+}
+
+/* CONTENEDOR IZQUIERDO */
+.welcome-section {
+  background-color: #ffffff;
+  border: 1px solid #ffe4e6;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 50%;
+  width: 70%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-.dashboard-content {
-  flex-grow: 1;
-  padding: 2rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  align-content: start;
-  min-height: calc(100vh - 88px);
-}
-
-.card {
-  background: #ffffff;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 1.25rem;
-}
-
-.card h2 {
-  color: #D6336C;
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-
-.card-welcome {
-  grid-column: 1 / -1;
-}
-
-.card-actions .actions {
+/* COLUMNA DERECHA */
+.right-sections {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40%;
+  width: 30%;
+  gap: 1.5rem;
 }
 
-.btn-secondary {
-  background-color: #FFE4E6;
-  color: #D6336C;
-  border: 1px solid #FBCFE8;
-  padding: 0.4rem 0.8rem;
+/* TARJETAS DERECHA */
+.resumen-section,
+.ultima-respuesta-section {
+  background-color: #ffffff;
+  border: 1px solid #ffe4e6;
+  border-radius: 12px;
+  padding: 2rem;
+  height: calc(50% - 0.75rem); /* Mitad exacta con el gap */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* BOTONES */
+.welcome-section button,
+.resumen-section button,
+.ultima-respuesta-section button {
+  background-color: #d6336c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
   border-radius: 0.5rem;
-  cursor: not-allowed;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
+.welcome-section button:hover,
+.resumen-section button:hover,
+.ultima-respuesta-section button:hover {
+  background-color: #bf2e62;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(214, 51, 108, 0.2);
+}
+
+/* ===== TEXTOS ===== */
 .dashboard-content h1 {
   font-size: 2rem;
-  color: #D6336C;
-  margin-bottom: 0.5rem;
+  color: #d6336c;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-content h2 {
+  font-size: 1.5rem;
+  color: #d6336c;
+  margin-bottom: 1rem;
 }
 
 .dashboard-content p {
-  color: #6B7280;
+  color: #6b7280;
   font-size: 1.05rem;
-}
-p {
-  color: #D6336C;
+  margin-bottom: 1.5rem;
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  .dashboard-header {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .dashboard-content h1 {
-    font-size: 1.6rem;
-  }
-}
 @media (max-width: 768px) {
   .dashboard-header {
     flex-direction: column;
     gap: 0.5rem;
   }
-  .grid {
+
+  .dashboard-content {
     grid-template-columns: 1fr;
-    min-height: auto;
+    height: auto;
+    margin-top: 1rem;
   }
-  .dashboard-content h1 {
-    font-size: 1.6rem;
+
+  .welcome-section,
+  .right-sections {
+    height: auto;
+  }
+
+  .resumen-section,
+  .ultima-respuesta-section {
+    height: auto;
   }
 }

@@ -25,13 +25,12 @@ function Dashboard() {
       if (!usuario || !usuario.id) return;
       try {
         const res = await fetch(`http://127.0.0.1:5000/api/resumen/${usuario.id}`);
-        if (!res.ok) return; // si no hay datos aún, no mostramos nada
+        if (!res.ok) return;
         const data = await res.json();
         if (data && data.grafico_barras) {
           setMiniChart(`data:image/png;base64,${data.grafico_barras}`);
         }
       } catch {
-        // ignoramos errores para no romper el dashboard
       }
     };
     fetchMiniChart();

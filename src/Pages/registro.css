@@ -1,20 +1,23 @@
 /* ===== Formulario de registro (scope) ===== */
 .form-container.register {
   border-radius: 0.75rem;
-  background-color: #ffe4e6; /* rosa claro */
+  background-color: #ffe4e6;
+  /* rosa claro */
   color: #333;
   width: 90%;
-  max-width: 720px; /* Aumentado para acomodar dos columnas */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 720px;
+  /* Aumentado para acomodar dos columnas */
+  box-shadow: 0 6px 16px rgba(214, 51, 108, 0.08);
   transition: all 0.3s ease;
-  padding: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid #f5c9d1;
 }
 
 /* ===== Título ===== */
 .form-container.register .title {
   text-align: center;
   font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-  font-weight: 700;
+  font-weight: 800;
   color: #d6336c;
   margin-bottom: 1rem;
 }
@@ -58,48 +61,49 @@
   box-sizing: border-box;
   height: 2.5rem;
   margin-bottom: 0.6rem;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
   border: 1px solid #e0bbe4;
   outline: none;
   background-color: #fff;
   color: #333;
-  padding: 0.4rem 0.65rem;
-  font-size: 0.9rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-container.register .input-group input:focus {
   border-color: #c084fc;
-  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.25);
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.25);
 }
 
 /* ===== Botón ===== */
 .form-container.register .sign {
   display: block;
   width: 100%;
-  background-color: #ff8a80;
-  padding: 0.6rem;
-  margin-top: 0.75rem;
+  background-color: #d6336c;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
   text-align: center;
   color: #fff;
   border: none;
-  border-radius: 0.4rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
 .form-container.register .sign:hover {
-  background-color: #ff6b6b;
-  transform: translateY(-1px);
+  background-color: #bf2e62;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(214, 51, 108, 0.18);
 }
 
 /* ===== Enlaces ===== */
 .form-container.register .forgot {
   display: flex;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #6b7280;
   margin: 0.5rem 0 0.75rem 0;
 }
@@ -118,7 +122,7 @@
 /* ===== Pie del formulario ===== */
 .form-container.register .signup {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #6b7280;
   margin-top: 0.5rem;
 }
@@ -127,7 +131,9 @@
 @media (max-width: 768px) {
   .form-container.register {
     max-width: 360px;
+    padding: 1.25rem 1.25rem;
   }
+
   .form-container.register .row {
     grid-template-columns: 1fr;
     gap: 0.75rem;

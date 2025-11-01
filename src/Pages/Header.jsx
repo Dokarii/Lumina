@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import "./App.css";
 import LuminaLogoSolo from "../images/LuminaLogoSolo.png";
@@ -23,22 +23,27 @@ function HeaderPage() {
   };
 
   return (
-    <div className="dashboard">
-      <header className="dashboard-header">
-        <div className="logo-area">
-          <img src={LuminaLogoSolo} alt="Lumina Logo" className="lumina-logo" />
+    <header className="dashboard-header">
+      <div className="logo-area">
+        <img src={LuminaLogoSolo} alt="Lumina Logo" className="lumina-logo" />
+        <div className="brand">
+          <span className="brand-title">Lumina</span>
+          <span className="brand-subtitle">Bienestar y aprendizaje</span>
         </div>
-        <strong>
-          <p>Bienvenido a Lumina 🌞</p>
-        </strong>
-        <div className="user-area">
-          {usuario && <span className="user-name">{usuario.nombre}</span>}
-          <button onClick={handleLogout} className="logout-btn">
-            Salir
-          </button>
-        </div>
-      </header>
-    </div>
+      </div>
+
+      <nav className="nav-links">
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/resumen">Resumen</Link>
+      </nav>
+
+      <div className="user-area">
+        {usuario && <span className="user-name">{usuario.nombre}</span>}
+        <button onClick={handleLogout} className="logout-btn">
+          Salir
+        </button>
+      </div>
+    </header>
   );
 }
 

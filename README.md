@@ -58,7 +58,7 @@ El proyecto está organizado en una arquitectura cliente-servidor:
 ### Configuración del Frontend
 ```bash
 # Clonar el repositorio
-git clone [url-del-repositorio]
+git clone https://github.com/Dokarii/Lumina.git
 
 # Navegar al directorio del proyecto
 cd Lumina
